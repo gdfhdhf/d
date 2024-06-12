@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Copy Code</title>
+  <style>
+    
+   .th-btn {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    vertical-align: middle;
+    display: inline-block;
+    border: none;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: var(--theme-color);
+    color: var(--white-color);
+    font-family: var(--body-font);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 17.5px 26px;
+    min-width: 150px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    
+.th-btn:hover, .th-btn.active {
+    color: var(--white-color);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+    
+  
+  
+  </style>
+  </head>
+<body>
+<a class="th-btn th_btn copy-to-clipboard" data-text="kaladdown24">Copied!</a>
+<script>
+    jQuery(document).ready(function($) {
+      $('.copy-to-clipboard').on('click', function(event) {
+        event.preventDefault(); // Prevent default anchor tag behavior
+
+        var text = $(this).data('text');
+
+        navigator.clipboard.writeText(text)
+          .then(() => {
+            // Update button text and class on success
+            $(this).text('Copied!'); // Replace button text with "Copied!"
+            $(this).addClass('clicked'); // Add a "clicked" class (if desired)
+          })
+          .catch(err => {
+            // Handle errors gracefully (e.g., display an error message)
+            console.error('Failed to copy text: ', err);
+          });
+      });
+    });
+  </script></body>
+  
+</html>
