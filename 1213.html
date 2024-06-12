@@ -3,7 +3,7 @@
     <title>Copy Code</title>
   <style>
     
-   .th-btn {
+ .th-btn {
     position: relative;
     z-index: 2;
     overflow: hidden;
@@ -12,9 +12,9 @@
     border: none;
     text-transform: uppercase;
     text-align: center;
-    background-color: var(--theme-color);
-    color: var(--white-color);
-    font-family: var(--body-font);
+    background-color: $theme-color;
+    color: $white-color;
+    font-family: $body-font;
     font-size: 14px;
     font-weight: 700;
     line-height: 1;
@@ -24,11 +24,37 @@
     cursor: pointer;
 }
 
-    
-.th-btn:hover, .th-btn.active {
-    color: var(--white-color);
-    -webkit-box-shadow: none;
+.th-btn:before {
+    content: "";
+    position: absolute;
+    height: calc(100% + 2px);
+    width: calc(100% + 30px);
+    top: -1px;
+    right: 100%;
+    background-color: $title-color;
+    z-index: -1;
+    transition: all 0.4s ease-out;
+    border-radius: inherit;
+    clip-path: polygon(calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%, 0 0);
+}
+
+.th-btn i {
+    transition: 0.4s transform ease-in-out;
+}
+
+.th-btn:hover,
+.th-btn.active {
+    color: $white-color;
     box-shadow: none;
+}
+
+.th-btn:hover:before,
+.th-btn.active:before {
+    right: -30px;
+}
+
+.th-btn:hover .fa-arrow-up-right {
+    transform: rotate(45deg);
 }
     
   
